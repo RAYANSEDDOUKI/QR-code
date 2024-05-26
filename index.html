@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>QR-code</title>
+      <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <div class="container">
+            <p>Enter you text ou URL</p>
+            <input type="text" placeholder="text ou URL" id="input">
+            <h2></h2>
+            <div id="imgBox">
+                  <img src="" id="qrcode">
+                  
+            </div>
+
+            <button onclick="GenerateQr()">Generate QR code</button>  
+      </div>
+      <p><a style="
+      position: fixed ; 
+      bottom: 0; 
+      right: 50%; 
+      text-align: center;
+      font-size: 1rem;
+      color: white;
+      margin-right: -52px;
+      padding-bottom: 10px;" href="https://github.com/RAYANSEDDOUKI" target="_blank">@rayanseddouki</a></p>
+
+      </body>
+<script>
+
+let imgBox = document.getElementById("imgBox")
+let qrcode = document.getElementById("qrcode")
+let input = document.getElementById("input")
+
+const api =  "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=";
+let h2 = document.querySelector("h2")
+
+function GenerateQr(){
+      if(input.value.length > 0){
+      qrcode.src = api + input.value;
+      imgBox.classList.add("show-img")
+      imgBox.style.display = "block"
+      h2.style.display = "none"
+
+  }else{
+      h2.innerHTML = "Please fill in the box"
+      // h2.style.color = "red"
+      imgBox.style.display = "none"
+  }
+}
+
+
+</script>
+</html>
